@@ -1,0 +1,47 @@
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 4%;
+}
+
+.navbar .profile{
+    width: 40px;
+}
+
+.navbar .name{
+    color: tomato;
+    font-size: 35px;
+}
+
+@media (max-width:900px){
+    .name{
+        font-size: 30px;
+    }
+    .navbar-menu{
+        gap: 15px;
+        font-size: 16px;
+    }
+
+    .navbar-right{
+        gap: 20px;
+    }
+
+    .navbar-right img{
+        width: 20px;
+    }
+
+    .navbar-right button{
+        padding: 7px 20px;
+        font-size: 15px;
+    }
+}
+
+@media (max-width:750px){
+    .name{
+        font-size: 25px;
+    }
+    .navbar-menu{
+       display: none;
+    }
+}
