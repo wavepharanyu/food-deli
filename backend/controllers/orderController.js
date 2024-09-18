@@ -6,7 +6,7 @@ const stripe = new Stripe('sk_test_51Ome7OAm1qsCm5mPWaG6rh9B6kcA7fGxkT1s1UjPCdGD
 
 //placing user order from frontend
 const placeOrder = async(req,res) => {
-    const frontend_url = 'http://localhost:5173'
+    const frontend_url = 'http://localhost:5174'
     try {
         const { userId, items, amount, address } = req.body
         const newOrder = new orderModel({
@@ -82,4 +82,27 @@ const userOrders = async(req,res) => {
     }
 }
 
-export { placeOrder, verifyOrder, userOrders }
+//list orders for admin
+const listOrders = async(req,res) => {
+    try {
+        const orders = await orderModel.find({})
+        res.json({ success: true, data: orders })
+    } catch (error) {
+        console.log(error)
+        res.json({success: false, message: "Error"})
+    }
+}
+
+//updating order status
+const updateStatus = async(req,res) => {
+    try {
+        const { orderId, status } = req.body
+        await orderModel.findByIdAndUpdate(orderId, { status })
+        res.json({success: true, message: "Status Updated"})
+    } catch (error) {
+        console.log(error)
+        res.json({success: false, message: "Error"})
+    }
+}
+
+export { placeOrder, verifyOrder, userOrders, listOrders, updateStatus }
