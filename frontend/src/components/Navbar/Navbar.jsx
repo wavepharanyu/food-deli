@@ -3,6 +3,7 @@ import './Navbar.css'
 import { assets } from "../../assets/assets"
 import { Link, useNavigate } from "react-router-dom";
 import { StoreContext } from "../../context/StoreContext";
+import { HashLink } from "react-router-hash-link";
 
 const Navbar = ({setShowLogin}) => {
 
@@ -20,10 +21,10 @@ const Navbar = ({setShowLogin}) => {
     <div className="navbar">
         <Link to='/'><h1 className="name">Food-Del</h1></Link>
         <ul className="navbar-menu">
-            <Link to="/" onClick={() => setMenu("home")} className={menu==="home" ? "active" : ""}>Home</Link>
-            <a href="#explore-menu" onClick={() => setMenu("menu")} className={menu==="menu" ? "active" : ""}>Menu</a>
-            <a href="#app-download" onClick={() => setMenu("mobile-app")} className={menu==="mobile-app" ? "active" : ""}>Mobile app</a>
-            <a href="#footer" onClick={() => setMenu("contact-us")} className={menu==="contact-us" ? "active" : ""}>Contact Us</a>
+            <HashLink to="/" onClick={() => setMenu("home")} className={menu==="home" ? "active" : ""}>Home</HashLink>
+            <HashLink to="/#explore-menu" onClick={() => setMenu("menu")} className={menu==="menu" ? "active" : ""}>Menu</HashLink>
+            <HashLink to="/#app-download" onClick={() => setMenu("mobile-app")} className={menu==="mobile-app" ? "active" : ""}>Mobile app</HashLink>
+            <HashLink to="/#footer" onClick={() => setMenu("contact-us")} className={menu==="contact-us" ? "active" : ""}>Contact Us</HashLink>
         </ul>
         <div className="navbar-right">
             <div className="navbar-search-icon">
