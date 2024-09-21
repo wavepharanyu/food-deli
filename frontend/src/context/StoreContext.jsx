@@ -28,6 +28,13 @@ const StoreContextProvider = (props) => {
         }
     }
 
+    const clearFromCart = async(itemId) => {
+        setCartItems((prev) => ({...prev,[itemId]: 0}))
+        if(token){
+            await axios.post(`${url}/api/cart/clear`, {itemId}, { headers: { token } })
+        }
+    }
+
     const getTotalCartAmount = () => {
         let totalAmount = 0;
         for(const item in cartItems){
@@ -66,6 +73,7 @@ const StoreContextProvider = (props) => {
         setCartItems,
         addToCart,
         removeFromCart,
+        clearFromCart,
         getTotalCartAmount,
         url,
         token,
